@@ -34,8 +34,7 @@ button {
       max-width: 100%;
       max-height: 100%;
       transform: perspective(160rem) translate3d(0px, 0px, 15rem) rotateX(27deg) scale(0.9, 0.9);
-      border-radius: 20px;
-      border: 5px solid #e3e3e3;
+      border-radius: 1rem;
       transition: 0.4s ease-in-out all;
       opacity: 0.4; }
     .App .App-body .images-container li:hover img {
@@ -50,6 +49,8 @@ button {
       display: flex;
       flex-direction: row;
       height: 90%; }
+      .App .App-body .images-container.flex::-webkit-scrollbar {
+        display: none; }
       .App .App-body .images-container.flex li {
         margin: auto 2rem; }
         .App .App-body .images-container.flex li img {
