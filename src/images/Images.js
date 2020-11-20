@@ -7,19 +7,29 @@ export default class Images extends Component {
         super(props)
     
         this.state = {
-             displayType: ['images-container grid']
+             displayFlex: false
+
         }
+        this.changeDisplay = this.changeDisplay.bind(this)
     }
-    
+    changeDisplay(e) {
+        console.log(e.target);
+        this.setState({
+            displayFlex: !this.state.displayFlex
+        })
+    }
     
     render() {
         const imageNumber = 91;
         const imageFinal = [];
+
         for(let i=1; i < imageNumber; i++){
-            imageFinal.push(<Image nr={i} key={i}/>)
+            imageFinal.push(<Image nr={i} key={i}
+                changeDisplay={this.changeDisplay}
+            />)
         }
         return (
-            <ul className={this.state.displayType}>
+            <ul className={`images-container ${this.state.displayFlex === false ?'grid' :'flex'}`}>
                 {imageFinal}
             </ul>
         )

@@ -28,7 +28,7 @@ button {
   height: 100%;
   overflow: auto; }
   .App .App-body .images-container {
-    margin: .5rem;
+    margin: 1.5rem;
     max-width: 100%; }
     .App .App-body .images-container li img {
       max-width: 100%;
