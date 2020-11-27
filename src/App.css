@@ -23,6 +23,15 @@ button {
   button:focus {
     outline: none; }
 
+.button {
+  font-size: 3rem;
+  color: #ffffff;
+  position: relative; }
+  .button.next {
+    right: -2rem; }
+  .button.prev {
+    left: -2rem; }
+
 .App .App-body {
   width: 100%;
   height: 100%;
@@ -45,14 +54,19 @@ button {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-row-gap: .2rem;
       grid-column-gap: .9rem; }
+      .App .App-body .images-container.grid .button {
+        display: none; }
     .App .App-body .images-container.flex {
       display: flex;
       flex-direction: row;
-      height: 90%; }
+      height: 90%;
+      justify-content: center; }
       .App .App-body .images-container.flex::-webkit-scrollbar {
         display: none; }
       .App .App-body .images-container.flex li {
-        margin: auto 2rem; }
+        margin: auto 2rem;
+        display: flex;
+        flex-direction: row; }
         .App .App-body .images-container.flex li img {
           max-width: 35rem; }
 

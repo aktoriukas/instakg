@@ -8,10 +8,31 @@ export default class Images extends Component {
     
         this.state = {
              displayFlex: false,
-             currentImage: ''
+             currentImage: 0,
+             imageNumber: 91
 
         }
-        this.changeDisplay = this.changeDisplay.bind(this)
+        this.changeDisplay = this.changeDisplay.bind(this);
+        this.prevImage = this.prevImage.bind(this);
+        this.nextImage = this.nextImage.bind(this);
+    }
+    nextImage () {
+        const { currentImage, imageNumber} = this.state;
+
+        let image = parseInt(currentImage) + 1;
+        if (image > imageNumber - 1) { image = 1}
+        this.setState({
+            currentImage: image
+        })
+    }
+    prevImage () {
+        const { currentImage, imageNumber} = this.state;
+
+        let image = parseInt(currentImage) - 1;
+        if (image < 1) { image = imageNumber -1}
+        this.setState({
+            currentImage: image
+        })
     }
     changeDisplay(e) {
         console.log(e.target.id);
@@ -22,8 +43,7 @@ export default class Images extends Component {
     }
     
     render() {
-        const {displayFlex, currentImage} = this.state;
-        const imageNumber = 91;
+        const {displayFlex, currentImage, imageNumber} = this.state;
         const imageFinal = [];
         let displayFormat = '';
 
@@ -31,6 +51,8 @@ export default class Images extends Component {
             imageFinal.push(<Image nr={i} key={i}
                 changeDisplay={this.changeDisplay}
                 display={!displayFlex || currentImage == i  ? {display:'inherit'} : {display:'none'}}
+                nextImage={this.nextImage}
+                prevImage={this.prevImage}
             />)
         }
         if ( displayFlex === false) {

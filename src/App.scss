@@ -27,6 +27,17 @@ button {
         outline: none;
     }
 }
+.button {
+    font-size: 3rem;
+    color: $white;
+    position: relative;
+    &.next {
+        right: -2rem;
+    }
+    &.prev {
+        left: -2rem;
+    }
+}
 .App {
 
     .App-body {
@@ -61,18 +72,23 @@ button {
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
                 grid-row-gap: .2rem;
                 grid-column-gap: .9rem;
-    
+                .button {
+                    display: none;
+                }
             }
             &.flex {
                 display: flex;
                 flex-direction: row;
                 height: 90%;
+                justify-content: center;
                 &::-webkit-scrollbar {
                     display: none;
                 }
                 
                 li {
                     margin: auto 2rem;
+                    display: flex;
+                    flex-direction: row;
                     img {
                         max-width: 35rem;
 
