@@ -41,6 +41,9 @@ export default class Images extends Component {
             currentImage: e.target.id
         })
     }
+    // handlerEvent (e) {
+    //     if(e.key == 'Escape') {this.changeDisplay()}
+    // }
     
     render() {
         const {displayFlex, currentImage, imageNumber} = this.state;
@@ -62,7 +65,10 @@ export default class Images extends Component {
         }
 
         return (
-            <ul className={`images-container ${displayFormat}`}>
+            <ul className={`images-container ${displayFormat}`}
+                onKeyDown={this.handlerEvent}
+                tabIndex="0" 
+            >
                 {imageFinal}
             </ul>
         )
