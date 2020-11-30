@@ -7,6 +7,7 @@ export default class Image extends Component {
         return (
             <li
                 style={display}
+                className={this.props.classList}
             >
                 <button className='button prev'
                     onClick={this.props.prevImage}

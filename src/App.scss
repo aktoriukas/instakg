@@ -34,11 +34,22 @@ button {
     font-size: 3rem;
     color: $white;
     position: relative;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 50;
+    width: 50%;
+    --position: -50%;
+    --button-padding: 5rem;
     &.next {
-        right: -2rem;
+        right: var(--position);
+        padding-left: var(--button-padding);
+        text-align: left;
     }
     &.prev {
-        left: -2rem;
+        left: var(--position);
+        padding-right: var(--button-padding);
+        text-align: right;
     }
 }
 .App {
@@ -50,33 +61,52 @@ button {
         .images-container {
             margin: 1.5rem;
             max-width: 100%;
-            li {
+            .image {
                 img {
                     max-width: 100%;
                     max-height: 100%;
-                    transform:
-                    perspective(160rem)
-                    translate3d(0px, 0px, 15rem)
-                    rotateX(27deg)
-                    scale(0.9, 0.9);
+                    transform:$image-transform;
                     border-radius: 1rem;
                     transition: 0.4s ease-in-out transform, 0.6s ease-in-out opacity;
                     opacity: 0.4;
                 }
-                &:hover {
-                    img{
-                        transform: translate3d(0px, 0px, -250px);
-                        opacity: 1;
+                &.none {
+                    display: none;
+                }
+                &.display {
+                    display: inherit;
+                    &.right,
+                    &.left {
+                        .button {
+                            display: none;
+                        }
+                        img {
+                            max-width: 15rem;
+                            transform: $image-transform;
+                            opacity: 0.4;
+                            transition: none;
+                        }
                     }
                 }
             }
             &.grid {
+                @media (max-width: 991.98px) {
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                }
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
                 grid-row-gap: .2rem;
                 grid-column-gap: .9rem;
                 .button {
                     display: none;
+                }
+                .image {
+                    &:hover {
+                        img{
+                            transform: translate3d(0px, 0px, -250px);
+                            opacity: 1;
+                        }
+                    }    
                 }
             }
             &.flex {
@@ -94,8 +124,15 @@ button {
                     flex-direction: row;
                     img {
                         max-width: 35rem;
-
+                        max-height: 80vh;
                     }
+                    &.display {
+                        position: relative;
+                        img{
+                            transform: translate3d(0px, 0px, -250px);
+                            opacity: 1;
+                        }
+                    }    
                 }
             }
         }

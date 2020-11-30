@@ -51,11 +51,22 @@ export default class Images extends Component {
         let displayFormat = '';
 
         for(let i=1; i < imageNumber; i++){
+            let display = '';
+            if (!displayFlex || currentImage == i) {
+                display = 'display'
+            } else if (currentImage - 1 == i) {
+                display = 'display left'
+            } else if (currentImage == i - 1 ){
+                display = 'display right'
+            } else {
+                display = 'none'
+            }
+
             imageFinal.push(<Image nr={i} key={i}
                 changeDisplay={this.changeDisplay}
-                display={!displayFlex || currentImage == i  ? {display:'inherit'} : {display:'none'}}
                 nextImage={this.nextImage}
                 prevImage={this.prevImage}
+                classList={`image ${display}`}
             />)
         }
         if ( displayFlex === false) {
